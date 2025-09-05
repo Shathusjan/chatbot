@@ -1,0 +1,113 @@
+{
+  "name": "Magnolia Cake",
+  "docs": [
+    {
+      "id": 1,
+      "category": "Dietary Options",
+      "question": "Do you cater for special dietary requirements?",
+      "answer": "We offer gluten-free and vegetarian options for a limited range of flavours. Availability may vary, so please contact us."
+    },
+    {
+      "id": 2,
+      "category": "Delivery",
+      "question": "Do you deliver?",
+      "answer": "Yes, we deliver to residential addresses or function centres within Melbourne Metropolitan area. Delivery charges vary by distance; cakes cannot be delivered to outdoor recreational areas."
+    },
+    {
+      "id": 3,
+      "category": "Transport",
+      "question": "How can I transport my cake safely?",
+      "answer": "Multi-tier cakes have internal supports and non-slip matting is provided. Place the cake on a flat, solid surface in your car, such as an empty boot or the passenger side floor."
+    },
+    {
+      "id": 4,
+      "category": "Opening Hours",
+      "question": "What are your opening hours?",
+      "answer": "Monday to Friday, 9 AM - 6 PM, and Saturday and Sunday, 9 AM - 5 PM."
+    },
+    {
+      "id": 5,
+      "category": "Ordering",
+      "question": "How do I order a cake?",
+      "answer": "Make an enquiry via our custom cake page with date, guest number, serving size, and design ideas. A 50% deposit confirms the order, with the balance due one week before the event."
+    },
+    {
+      "id": 6,
+      "category": "Payment",
+      "question": "How do I pay for my cake?",
+      "answer": "A 50% deposit is required to secure the booking. The balance is due one week prior to the event. Payments can be made by card, direct deposit, or cash at pick up."
+    },
+    {
+      "id": 7,
+      "category": "Pricing",
+      "question": "How much will my cake cost?",
+      "answer": "Prices depend on size and design complexity. Minimum order is $170."
+    },
+    {
+      "id": 8,
+      "category": "Storage",
+      "question": "How should I store my cake?",
+      "answer": "Store in an air-conditioned room. After cutting, decorations can be removed and the cake refrigerated for up to a week or frozen in portions."
+    },
+    {
+      "id": 9,
+      "category": "Packaging",
+      "question": "How will my cake be packed?",
+      "answer": "Cakes are delivered or collected in waxed cake boxes; taller cakes may not have lids."
+    },
+    {
+      "id": 10,
+      "category": "Booking",
+      "question": "When should I book my cake?",
+      "answer": "Book as soon as your event date is determined. We recommend at least three weeks in advance, especially for weddings or large events."
+    },
+    {
+      "id": 11,
+      "category": "Flavours",
+      "question": "What flavours are available?",
+      "answer": "We offer: Standard, Chocolate, Vanilla, Red Velvet, Carrot and Cinnamon, Pistachio & Rose, Marble Swirl, Coffee, Mocha, Caramel."
+    },
+    {
+      "id": 12,
+      "category": "Fillings",
+      "question": "What fillings are available?",
+      "answer": "We offer: Standard, Vanilla Bean, Chocolate, Cream Cookies, Caramel, Coconut, Coffee, Raspberry, Strawberry, Blueberry, Pineapple, Mixed Berries, Mango, Passionfruit, Mint, Pistachio."
+    },
+    {
+      "id": 13,
+      "category": "Location",
+      "question": "Where is Magnolia Cake located?",
+      "answer": "Magnolia Cake is located in Melbourne, VIC."
+    },
+    {
+      "id": 14,
+      "category": "Contact - Phone",
+      "question": "What is the phone number for Magnolia Cake?",
+      "answer": "+61 422 733 882"
+    },
+    {
+      "id": 15,
+      "category": "Contact - Email",
+      "question": "What is the email address for Magnolia Cake?",
+      "answer": "contact@magnoliacake.com.au"
+    },
+    {
+      "id": 16,
+      "category": "Contact - Website",
+      "question": "What is the website for Magnolia Cake?",
+      "answer": "https://magnoliacake.com.au/"
+    },
+    {
+      "id": 17,
+      "category": "Contact - Instagram",
+      "question": "What is Magnolia Cake's Instagram?",
+      "answer": "https://www.instagram.com/cakes_magnolia/"
+    },
+    {
+      "id": 18,
+      "category": "Contact - Facebook",
+      "question": "What is Magnolia Cake's Facebook page?",
+      "answer": "https://www.facebook.com/magnolia.cake.au"
+    }
+  ]
+}
