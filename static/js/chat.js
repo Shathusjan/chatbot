@@ -1,39 +1,23 @@
 import { appendUserMessage } from "./user_messages.js";
 import { appendBotMessage } from "./bot_messages.js";
+import sessionManager from "./session_manager.js";
 
 document.addEventListener('DOMContentLoaded', function () {
     const chatWindow = document.getElementById('chat_window');
     const inputBox = document.getElementById('chat-input');
 
-    // Load saved conversation from sessionStorage
-    const savedChat = sessionStorage.getItem("chatHistory");
-    if (savedChat) {
-        const history = JSON.parse(savedChat);
-        history.forEach(msg => {
-            if (msg.sender === "user") {
-                appendUserMessage(msg.text);
-            } else {
-                appendBotMessage(msg.text, msg.options, handleUserInput);
-            }
-        });
-    }
-
-    // Helper: save chat state
-    function saveMessage(sender, text, options = null) {
-        let history = JSON.parse(sessionStorage.getItem("chatHistory") || "[]");
-        history.push({ sender, text, options });
-        sessionStorage.setItem("chatHistory", JSON.stringify(history));
-    }
-
     // Send user input to backend and handle response
     window.handleUserInput = function (message) {
         if (!message.trim()) return;
+
+        if (message.toLowerCase().includes("quote")) {
+            sessionManager.initializeSession("quotation");
+        }
 
         const quickActions = document.querySelector('.quick-actions');
         if (quickActions) quickActions.style.display = 'none';
 
         appendUserMessage(message);
-        saveMessage("user", message);
         inputBox.value = '';
         inputBox.disabled = true;
 
@@ -50,25 +34,43 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (data && typeof data === "object") {
                     if (data.reply && data.reply.trim() !== "") {
                         appendBotMessage(data.reply, data.options, handleUserInput);
-                        saveMessage("bot", data.reply, data.options || null);
+                        if (sessionManager.isFeatureActive("quotation")) {
+                            sessionManager.setStep(data.reply);
+                        }
                     }
                 }
             } catch (err) {
                 console.error("Chat processing error:", err);
                 appendBotMessage("Sorry, there was an error.");
-                saveMessage("bot", "Sorry, there was an error.");
             }
         })
         .catch(err => {
             console.error("Fetch error:", err);
             appendBotMessage("Sorry, there was an error.");
-            saveMessage("bot", "Sorry, there was an error.");
         })
         .finally(() => {
             inputBox.disabled = false;
             inputBox.focus();
         });
     };
+
+    // Load saved session and show placeholder if quotation active
+    const session = sessionManager.loadSession();
+    if (sessionManager.isFeatureActive("quotation")) {
+    appendBotMessage(
+        "You have an unfinished quotation. Do you want to continue?",
+        ["Resume", "Start Over"],
+        (choice) => {
+            if (choice === "Resume") {
+                appendBotMessage("Okay, resuming your quotation...");
+                // continue quotation flow...
+            } else {
+                sessionManager.clearSession();
+                appendBotMessage("No problem, let's start fresh!");
+            }
+        }
+    );
+}
 
     // Event listener for Enter key
     inputBox.addEventListener('keydown', function (e) {

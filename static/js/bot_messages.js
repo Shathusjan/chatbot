@@ -19,10 +19,10 @@ export function appendBotMessage(message, options) {
     if (/^[-•]\s+/.test(trimmedLine)) {
       // Line is a bullet item
       if (!listOpen) {
-        htmlContent += "<ul class='list-disc list-inside m-0 p-0'>";
+        htmlContent += "<ul class='list-disc list-inside text-sm m-0 p-0' >";
         listOpen = true;
       }
-      htmlContent += `<li>${trimmedLine.replace(/^[-•]\s+/, '')}</li>`;
+      htmlContent += `<li class="text-sm">${trimmedLine.replace(/^[-•]\s+/, '')}</li>`;
     } else {
       // Close list if we were inside one
       if (listOpen) {
@@ -30,7 +30,7 @@ export function appendBotMessage(message, options) {
         listOpen = false;
       }
       if (trimmedLine.length > 0) {
-        htmlContent += `<p class="my-1">${trimmedLine}</p>`;
+        htmlContent += `<p class="my-1 text-sm ">${trimmedLine}</p>`;
       }
     }
   });
@@ -42,7 +42,7 @@ export function appendBotMessage(message, options) {
   msgDiv.innerHTML = `
     <div class="flex items-center">
       <div class="w-8 h-8 bg-purple-600 text-white flex items-center justify-center rounded-full">🤖</div>
-      <div class="bg-purple-200 text-purple-900 px-3 py-2 rounded-lg max-w-xs ml-2">
+      <div class="bg-purple-200 text-purple-900 text-sm px-3 py-2 rounded-lg max-w-xs ml-2">
         ${htmlContent}
       </div>
     </div>

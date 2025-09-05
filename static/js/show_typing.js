@@ -8,7 +8,7 @@ function showTyping() {
         // Inner HTML includes animated dots styled with Tailwind CSS classes
         typingDiv.innerHTML = `
           <div class="w-8 h-8 bg-purple-600 text-white flex items-center justify-center rounded-full">🤖</div>
-          <div class="flex gap-1">
+          <div class="flex gap-1 text-sm ">
             <span class="w-2 h-2 bg-purple-600 rounded-full animate-bounce animation-delay-200"></span>
             <span class="w-2 h-2 bg-purple-600 rounded-full animate-bounce animation-delay-400"></span>
             <span class="w-2 h-2 bg-purple-600 rounded-full animate-bounce animation-delay-600"></span>
@@ -34,7 +34,7 @@ function showTyping() {
       messageDiv.className = 'bot-message flex items-start gap-2';
       messageDiv.innerHTML = `
         <div class="w-8 h-8 bg-purple-600 text-white flex items-center justify-center rounded-full">🤖</div>
-        <div class="bg-purple-100 text-purple-900 p-2 rounded-lg max-w-xs">${message}</div>
+        <div class="bg-purple-100 text-purple-900 text-sm p-2 rounded-lg max-w-xs">${message}</div>
       `;
       chatWindow.appendChild(messageDiv);
       chatWindow.scrollTop = chatWindow.scrollHeight;
