@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
         inputBox.value = '';
         inputBox.disabled = true;
 
+        showTyping();
+
         fetch('/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -35,18 +37,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (data.reply && data.reply.trim() !== "") {
                         appendBotMessage(data.reply, data.options, handleUserInput);
                         if (sessionManager.isFeatureActive("quotation")) {
-                            sessionManager.setStep(data.reply);
+                            sessionManager.setStep(data.step || data.reply);
                         }
                     }
                 }
             } catch (err) {
                 console.error("Chat processing error:", err);
                 appendBotMessage("Sorry, there was an error.");
+            } finally {
+                hideTyping();
             }
         })
         .catch(err => {
             console.error("Fetch error:", err);
             appendBotMessage("Sorry, there was an error.");
+            hideTyping();
         })
         .finally(() => {
             inputBox.disabled = false;
@@ -54,23 +59,23 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     };
 
-    // Load saved session and show placeholder if quotation active
+    // Load saved session and show placeholder if quotation active and session.step exists
     const session = sessionManager.loadSession();
-    if (sessionManager.isFeatureActive("quotation")) {
-    appendBotMessage(
-        "You have an unfinished quotation. Do you want to continue?",
-        ["Resume", "Start Over"],
-        (choice) => {
-            if (choice === "Resume") {
-                appendBotMessage("Okay, resuming your quotation...");
-                // continue quotation flow...
-            } else {
-                sessionManager.clearSession();
-                appendBotMessage("No problem, let's start fresh!");
+    if (session && sessionManager.isFeatureActive("quotation") && session.step) {
+        appendBotMessage(
+            "You have an unfinished quotation. Do you want to continue?",
+            ["Resume", "Start Over"],
+            (choice) => {
+                if (choice === "Resume") {
+                    appendBotMessage("Okay, resuming your quotation...");
+                    // continue quotation flow...
+                } else {
+                    sessionManager.clearSession();
+                    appendBotMessage("No problem, let's start fresh!");
+                }
             }
-        }
-    );
-}
+        );
+    }
 
     // Event listener for Enter key
     inputBox.addEventListener('keydown', function (e) {

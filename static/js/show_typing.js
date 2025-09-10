@@ -47,3 +47,7 @@ function showTyping() {
         appendBotMessage("👋 Hi there! How can I help you today?");
       }, 2000);
     });
+
+// Expose globally so chat.js can access
+window.showTyping = showTyping;
+window.hideTyping = hideTyping;
